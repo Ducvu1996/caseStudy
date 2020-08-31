@@ -9,7 +9,7 @@ public class Villa extends Services{
 		super();
 		
 	}
-	public Villa( String id,String nameServices, double usedArea, double rentCost, int numberOfPeople,
+	public Villa( String nameServices,String id, double usedArea, double rentCost, int numberOfPeople,
 			String typeOfRent,String standardRoom,double poolArea,int numberOfFloor) {
 		super(id,nameServices,usedArea,rentCost,numberOfPeople,typeOfRent);
 		this.standardRoom = standardRoom;
@@ -56,16 +56,17 @@ public class Villa extends Services{
 
 
 	@Override
-	void showInfor() {
+	public void showInfor() {
 		System.out.println(
-				""+super.getNameServices()
-				+""+super.getUsedArea()
-				+""+super.getRentCost()
-				+""+super.getNumberOfPeople()
-				+""+super.getTypeOfRent()
-				+""+this.getStandardRoom()
-				+""+this.getPoolArea()
-				+""+this.getNumberOfFloor() 
+				"name:"+super.getNameServices()+"\t"+
+				"id:"+super.getId()+"\t"
+				+"use area:"+super.getUsedArea()+"\t"
+				+" rent cost:"+super.getRentCost()+"\t"
+				+" number of people:"+super.getNumberOfPeople()+"\t"
+				+" type of rent:"+super.getTypeOfRent()+"\t"
+				+" standard room:"+this.getStandardRoom()+"\t"
+				+"pool area:"+this.getPoolArea()+"\t"
+				+"number of floor: "+this.getNumberOfFloor()+"\t" 
 		);
 		
 	}

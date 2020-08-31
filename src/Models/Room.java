@@ -6,7 +6,7 @@ public class Room extends Services{
 		super();
 	}
 	
-	public Room( String id,String nameServices, double usedArea, double rentCost, int numberOfPeople,
+	public Room(String nameServices, String id, double usedArea, double rentCost, int numberOfPeople,
 			String typeOfRent,String freeServiceIncluded) {
 		super(id,nameServices,usedArea,rentCost,numberOfPeople,typeOfRent);
 		this.freeServiceIncluded = freeServiceIncluded;
@@ -23,15 +23,17 @@ public class Room extends Services{
 	
 
 	@Override
-	void showInfor() {
+	public void showInfor() {
 	
 		System.out.println(
-				""+super.getNameServices()
-				+""+super.getUsedArea()
-				+""+super.getRentCost()
-				+""+super.getNumberOfPeople()
-				+""+super.getTypeOfRent()
-				+""+this.getFreeServiceIncluded()
+				"name:"+super.getNameServices()+"\t"+
+				"id:"+super.getId()+"\t"
+				+"use area:"+super.getUsedArea()+"\t"
+				+" rent cost:"+super.getRentCost()+"\t"
+				+" number of people:"+super.getNumberOfPeople()+"\t"
+				+" type of rent:"+super.getTypeOfRent()+"\t"
+				+" free service included:"+this.getFreeServiceIncluded()+"\t"
+						
 		);
 		
 	}

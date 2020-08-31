@@ -1,15 +1,9 @@
-package Controllers;
+package controllers;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
-import Models.Room;
-
 public class MainController {
-    public static final String COMMA = ",";
+ 
 	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -17,10 +11,14 @@ public class MainController {
 		boolean exit = false;
 		displayMainMenu();
 		while(true) {
+			System.out.println("input a choice");
 			choice= scanner.nextInt();
 			switch(choice) {
 				case 1:
 					addNewServies(); 
+					break;
+				case 2:
+					showServies();
 					break;
 				case 7: 
 					System.out.println("exited!");
@@ -37,6 +35,7 @@ public class MainController {
 			}
 		
 	}
+	
 	public static void displayMainMenu() {
 		System.out.println("1.	 Add New Services\r\n" + 
 				"2.	Show Services\r\n" + 
@@ -46,6 +45,42 @@ public class MainController {
 				"6.	Show Information of Employee\r\n" + 
 				"7.	Exit\r\n" + 
 				"======================================");
+	}
+	private static void showServies() {
+		System.out.println("1.	Show all Villa\r\n" + 
+				"2.	Show all House\r\n" + 
+				"3.	Show all Room\r\n" + 
+				"4.	Show All Name Villa Not Duplicate\r\n" + 
+				"5.	Show All Name House Not Duplicate\r\n" + 
+				"6.	Show All Name Name Not Duplicate\r\n" + 
+				"7.	Back to menu\r\n" + 
+				"8.	Exit\r\n" + 
+				"");
+		int choice; 
+		System.out.println("input a choice");
+		choice= scanner.nextInt();
+		switch(choice) {
+			case 1: 
+				ShowController.showAllVilla();
+				break;
+			case 2:
+				ShowController.showAllHouse();
+				break;
+			case 3:
+				ShowController.showAllRoom();
+				break;
+			case 4:
+				break;
+			case 8:
+				System.out.println("exited!");
+                break;
+			 default:
+	            System.out.println("invalid! please choose action in below menu:");
+	            break;
+	        
+		}
+
+		
 	}
 	private static void addNewServies() {
 		System.out.println("1.	Add New Villa\r\n" + 
@@ -59,60 +94,23 @@ public class MainController {
 		choice= scanner.nextInt();
 		switch(choice) {
 			case 1: 
-				addNewVilla();
+				AddController.addNewVilla();
 				break;
 			case 2:
-				addNewHouse();
+				AddController.addNewHouse();
+				break;
 			case 3:
-				
-				addNewRoom();
+				AddController.addNewRoom();
 				break;
 			case 4:
-		
+			case 5:
+				System.out.println("exited!");
+                break;
+			 default:
+	            System.out.println("invalid! please choose action in below menu:");
+	            break;
+	        
 		}
-		 scanner.skip("\\R");
+	}
 	
-	}
-	private static void addNewRoom() {
-		 scanner.skip("\\R");
-		System.out.println("input name servives:");
-		String nameServices = scanner.nextLine();
-		
-		System.out.println("input id:");
-		String id = scanner.nextLine();
-		System.out.println("input used area:");
-		Double usedArea = scanner.nextDouble();
-		System.out.println("input rent cost:");
-		Double rentCost = scanner.nextDouble();
-		System.out.println("input number of people:");
-		int numberOfPeople = scanner.nextInt();
-		System.out.println("input type of rent:");
-		 scanner.skip("\\R");
-		String typeOfRent = scanner.nextLine();
-		System.out.println("input freeServiceIncluded:");
-		String freeServiceIncluded = scanner.nextLine();
-		Room room = new Room(id,nameServices,usedArea,rentCost,numberOfPeople,typeOfRent,freeServiceIncluded);
-		
-		File file= new File("C:\\Users\\USER\\eclipse-workspace\\CaseStudy\\src\\Data\\Room.csv");
-		try {
-			FileWriter fileWriter = new FileWriter(file,true);
-		    BufferedWriter buffWrite = new BufferedWriter(fileWriter);
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(room.getNameServices()).append(COMMA).append(room.getId()).append(COMMA).append(room.getUsedArea());
-            stringBuilder.append(COMMA).append(room.getRentCost()).append(COMMA).append(room.getNumberOfPeople()).append(COMMA).append(room.getTypeOfRent());
-            stringBuilder.append("\n");
-            buffWrite.write(stringBuilder.toString());
-            buffWrite.flush();
-            buffWrite.close();
-		}catch(IOException e){
-			e.printStackTrace();
-		}
-		
-	}
-	private static void addNewHouse() {
-		
-	}
-	private static void addNewVilla() {
-		
-	}
 }
