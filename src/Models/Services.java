@@ -11,7 +11,7 @@ public abstract class Services {
 	public Services() {
 	}
 	
-	public Services(String id, String nameServices, double usedArea, double rentCost, int numberOfPeople,
+	public Services( String nameServices,String id, double usedArea, double rentCost, int numberOfPeople,
 			String typeOfRent) {
 
 		this.id = id;
@@ -60,5 +60,19 @@ public abstract class Services {
 	public void setTypeOfRent(String typeOfRent) {
 		this.typeOfRent = typeOfRent;
 	}
-	abstract void showInfor();
+	abstract String showInfor();
+	@Override
+	public String toString() {
+		return
+				"name:"+this.getNameServices()+"\t"+
+				"id:"+this.getId()+"\t"
+				+"use area:"+this.getUsedArea()+"\t"
+				+" rent cost:"+this.getRentCost()+"\t"
+				+" number of people:"+this.getNumberOfPeople()+"\t"
+				+" type of rent:"+this.getTypeOfRent();
+				
+		
+	
+		
+	} 
 }
